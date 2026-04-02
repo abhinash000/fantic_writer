@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantic Writer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Hide scrollbars globally for immersion */
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-color: #faf9f6;
+        }
+
+        .font-serif {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .reader-text-container {
+            text-align: justify;
+            hyphens: auto;
+            text-justify: inter-word;
+        }
+
+        @media (min-width: 1440px) {
+            .book-columns {
+                column-count: 2;
+                column-gap: 80px;
+                column-fill: auto;
+            }
+        }
+
+        .page-enter {
+            opacity: 0;
+            transform: translateX(30px) rotateY(3deg);
+        }
+        .page-active {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .page-exit {
+            opacity: 0;
+            transform: translateX(-30px) rotateY(-3deg);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .highlight-mark {
+            border-radius: 0.125rem;
+            padding: 0 0.125rem;
+            transition: background-color 0.2s ease;
+        }
+
+        @keyframes emotion-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .emotion-border {
+            background-size: 300% 300%;
+            animation: emotion-flow 4s ease-in-out infinite;
+            filter: blur(0.5px);
+        }
+
+        .top-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #000;
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+
+        /* Ritual Animations */
+        @keyframes ritual-overlay-fade {
+            0% { opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes ritual-text-fade {
+            0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+            20% { opacity: 1; transform: translateY(0) scale(1); }
+            80% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-10px) scale(1.02); }
+        }
+
+        .ritual-overlay {
+            animation: ritual-overlay-fade 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .ritual-text {
+            animation: ritual-text-fade 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes title-float {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.02); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+        .animate-title-float {
+            animation: title-float 10s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        /* Generic utilities for standard tailwind missing ones */
+        .animate-in { animation-duration: 500ms; animation-fill-mode: both; }
+        .fade-in { animation-name: fadeIn; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .zoom-in-95 { animation-name: zoomIn95; }
+        @keyframes zoomIn95 { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .slide-in-from-right { animation-name: slideInFromRight; }
+        @keyframes slideInFromRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+        .slide-in-from-bottom-2 { animation-name: slideInFromBottom2; }
+        @keyframes slideInFromBottom2 { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-[#faf9f6] text-zinc-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

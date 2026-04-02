@@ -1,0 +1,8 @@
+
+{
+  "name": "Fantic Writer - Immersive Novel Universe",
+  "description": "An offline-first, private immersive novel reading and writing platform designed for deep focus and emotional storytelling.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
