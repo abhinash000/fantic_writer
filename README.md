@@ -1,20 +1,78 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Fantic Writer
 
-# Run and deploy your AI Studio app
+> A cinematic writing and reading workspace for building story chapters, navigating a visual story map, and exploring immersive prose in a focused interface.
 
-This contains everything you need to run your app locally.
+## Why This Project Exists
 
-View your app in AI Studio: https://ai.studio/apps/temp/1
+Fantic Writer is designed for authors who want structure and atmosphere at the same time.
+Instead of a plain editor, it combines a manuscript workspace, a map-like chapter navigator,
+and a distraction-light reading experience.
 
-## Run Locally
+## Experience Highlights
 
-**Prerequisites:**  Node.js
+- Chapter-based writing workflow
+- Visual story map navigation
+- Reader mode with immersive layout
+- Cover-art aware storytelling UI
+- Local-first development with Vite + React + TypeScript
 
+## Demo Gallery
+
+### Reader View
+
+![Reader View Demo](images/demo.png)
+
+### Story Map
+
+![Story Map Demo](images/storymap.png)
+
+### Writer Workspace
+
+![Writer Workspace Demo](images/writerpage.png)
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+
+## Local Setup
+
+Prerequisite: Node.js (LTS recommended)
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+```bash
+npm install
+```
+
+2. Add your API key to `.env.local`:
+
+```env
+GEMINI_API_KEY=your_key_here
+```
+
+3. Start development server:
+
+```bash
+npm run dev
+```
+
+4. Build for production:
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```text
+components/   UI screens and story interfaces
+services/     storage, parsing, API, achievements
+images/       demo and UI assets
+scripts/      utility conversion scripts
+```
+
+## Vision
+
+Write stories that feel like worlds. Navigate them like constellations.
